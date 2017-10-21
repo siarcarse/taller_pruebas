@@ -8,6 +8,8 @@
     <meta name="HandheldFriendly" content="True" />
     <title>..:: TALLER ::..</title>
     <!-- Default Page CSS -->
+    <link rel="stylesheet" type="text/css" href="/public/tools/bootstrap/css/bootstrap.min.css">
+    <!-- / Default Page CSS -->
   
     {{#block "css"}}
     {{/block}}
@@ -16,8 +18,10 @@
 <body>
     {{{content}}}
 
+
+    <script type="text/javascript" src="/public/tools/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        console.log("Esto es un ejemplo");
+        console.log("Console.log en DEFAULT");
     </script>
     {{#block "js"}}
     {{/block}}

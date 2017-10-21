@@ -35,28 +35,23 @@ server.register([
     //AQUI VAN MIS RUTAS
     // Add the route
     server.route({
-        method: 'POST',
-        path: '/hello',
-        handler: function(request, reply) {
-
-            return reply('hello world');
-        }
-    });
-    server.route({
         method: 'GET',
         path: '/',
         handler: function(request, reply) {
-
-            return reply('hello raíz');
+            return reply.view('app/index');
         }
     });
     server.route({
-        method: 'GET',
-        path: '/prueba',
-        handler: function(request, reply) {
-            reply.file('index.html');
+    method: 'GET',
+    path: '/public/{path*}',
+    handler: {
+        directory: {
+            path: './public',
+            listing: false,
+            index: false
         }
-    });
+    }
+});
 });
 
 // Start the server
