@@ -42,6 +42,13 @@ server.register([
         }
     });
     server.route({
+        method: 'GET',
+        path: '/users',
+        handler: function(request, reply) {
+            return reply.view('app/users');
+        }
+    });
+    server.route({
     method: 'GET',
     path: '/public/{path*}',
     handler: {
