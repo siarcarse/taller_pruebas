@@ -1,0 +1,22 @@
+{
+  "name": "taller",
+  "version": "1.0.0",
+  "description": "Taller de prueba de sistemas",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "Siarcarse",
+  "license": "ISC",
+  "dependencies": {
+    "handlebars": "^4.0.11",
+    "handlebars-extend-block": "^1.0.0",
+    "hapi": "^16.6.2",
+    "inert": "^4.2.1",
+    "vision": "^4.1.1"
+  }
+}
