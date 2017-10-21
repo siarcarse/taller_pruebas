@@ -29,7 +29,7 @@ server.register([
         path: 'views',
         layoutPath: 'views/layout',
         layout: 'default',
-        helpersPath: 'views/helpers',
+        //helpersPath: 'views/helpers',
         partialsPath: 'views/partials'
     });
     //AQUI VAN MIS RUTAS
