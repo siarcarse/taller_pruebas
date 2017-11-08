@@ -1,0 +1,16 @@
+{{!< layout/default}}
+{{#extend "css"}}
+    <!-- MIS ARCHIVOS CSS  -->
+    <style type="text/css">
+    .title-red {
+        color: red;
+    }
+    </style>
+{{/extend}}
+{{> navbar}}
+<h1 class="title-red">Mi primer handlebars</h1>
+{{#extend "js"}}
+    <script type="text/javascript">
+    console.log("Console.log en INDEX");
+    </script>
+{{/extend}}

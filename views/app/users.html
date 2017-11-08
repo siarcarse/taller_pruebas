@@ -20,6 +20,25 @@
 	<tbody id="body-table">
 	</tbody>
 </table>
+<a class="btn btn-primary" data-toggle="modal" href='#modal-id'>Crear Usuario</a>
+<div class="modal fade" id="modal-id">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Formulario de usuarios</h4>
+			</div>
+			<div class="modal-body">
+				<input type="text" id="username" class="form-control" placeholder="Ingrese Usuario">
+				<input type="password" id="password" class="form-control" placeholder="Ingrese Contraseña">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				<button id="saveButton" type="button" class="btn btn-success">Guardar</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 {{#extend "js"}}
     <script type="text/javascript" src="/public/app/users/main.js"></script>

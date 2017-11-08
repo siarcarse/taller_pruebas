@@ -6,11 +6,11 @@ $(document).ready(function() {
                 dataType: 'json'
             })
             .done(function(users) {
-            	console.log('Dentro del ajax'); 
+            	console.log('Dentro del ajax');
                 if(users) {
+                    var html = '';
                 	for (var i = 0; i < users.length; i++) {
                 		var usersObj = users[i];
-                		var html = '';
                 		html += '<tr>';
                 		html += '<td>' + usersObj.id + '</td>';
                 		html += '<td>' + usersObj.username + '</td>';
@@ -23,5 +23,11 @@ $(document).ready(function() {
             .fail(function(err) {
                 console.log(err);
             });
-            console.log('Fuera del ajax Abajo'); 
+            $('#saveButton').click(function(event) {
+                var username = $('#username').val();
+                var password = $('#password').val();
+                $.post('/api/users', {username: username, password: password}, function(data, textStatus, xhr) {
+                    window.location.reload(true);
+                });
+            });
     });
