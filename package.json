@@ -17,6 +17,7 @@
     "handlebars": "^4.0.11",
     "handlebars-extend-block": "^1.0.0",
     "hapi": "^16.6.2",
+    "hapi-auth-cookie": "^7.0.0",
     "hapi-postgres-connection": "^6.4.0",
     "hapi-router": "^3.5.0",
     "inert": "^4.2.1",

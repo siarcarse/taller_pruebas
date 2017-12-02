@@ -2,7 +2,23 @@ $(document).ready(function() {
     refreshTable();
     $('#saveButton').click(function(event) {
         var isUpdate = $(this).attr('data-update');
+        var iduser = $(this).attr('data-iduser');
         if (isUpdate === 'true') {
+            var username = $('#username').val();
+            var password = $('#password').val();
+            $.ajax({
+                    url: '/api/users',
+                    type: 'PATCH',
+                    dataType: 'json',
+                    data: { id: iduser, username: username, password: password },
+                })
+                .done(function() {
+                    $('#modal-id').modal('hide');
+                    refreshTable();
+                })
+                .fail(function() {
+                    console.log("error");
+                });
 
         } else {
             var username = $('#username').val();
@@ -15,6 +31,12 @@ $(document).ready(function() {
                 console.log('me hicieron click');
             });
         }
+    });
+    $('#modal-id').on('hidden.bs.modal', () => {
+        $('#saveButton').attr('data-update', 'false');
+        $('#saveButton').attr('data-iduser', '');
+        $('#password').val('');
+        $('#username').val('');
     });
 });
 
@@ -64,9 +86,9 @@ function getDataRow(icono) {
     var id = $(icono).parent().siblings().first().text();
     var username = $(icono).parent().siblings().first().next().text();
     var password = $(icono).parent().siblings().first().next().next().text();
-    $('#saveButton').attr('data-update', true);
+    $('#saveButton').attr('data-update', 'true');
+    $('#saveButton').attr('data-iduser', id);
     $('#username').val(username);
     $('#password').val(password);
     $('#modal-id').modal('show');
-    console.log(id, username, password);
 }

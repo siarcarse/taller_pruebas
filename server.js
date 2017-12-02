@@ -4,6 +4,7 @@ const Hapi = require('hapi');
 const Inert = require('inert');
 const Vision = require('vision');
 const handlebars = require('handlebars');
+const hapiAuthCookie = require('hapi-auth-cookie');
 const extend = require('handlebars-extend-block');
 const dotenv = require('dotenv');
 
@@ -16,6 +17,7 @@ server.connection({
 });
 server.register([
     { register:  Inert },
+    { register: hapiAuthCookie },
     { register:  Vision },
     { register: require('hapi-postgres-connection') },
     {
@@ -28,6 +30,27 @@ server.register([
     if (err) {
         console.log("Failed to load module. ", err);
     }
+    const cache = server.cache({ segment: 'session', expiresIn: 3 * 60 * 60 * 1000 });
+    server.app.cache = cache;
+
+    server.auth.strategy('session', 'cookie', true, {
+        password: 'iuyqweiuqyweiuqwkjhdgaskjhdgakshjdgajshdgajhsgdjhasgd',
+        cookie: 'sid-aiep',
+        redirectTo: '/login',
+        isSecure: false,
+        validateFunc: function(request, session, callback) {
+            cache.get(session.sid, function(err, cached) {
+                if (err) {
+                    return callback(err, false);
+                }
+                if (!cached) {
+                    return callback(null, false);
+                }
+                return callback(null, true, cached.account);
+            })
+        }
+    })
+
     server.views({
         engines: {
             html: {

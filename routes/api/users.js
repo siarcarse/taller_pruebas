@@ -42,5 +42,22 @@ module.exports = [{
                 return reply([]);
             })
         }
+    },
+    {
+        method: 'PATCH',
+        path: '/api/users',
+        handler: function(request, reply) {
+            var id = request.payload.id;
+            var password = request.payload.password;
+            var username = request.payload.username;
+            var sql = "UPDATE users SET username = '" + username + "', password='" + password + "' WHERE id=" + id;
+            request.pg.client.query(sql, function(err, result) {
+                if (err) {
+                    console.log(err);
+                    return reply([]);
+                }
+                return reply([]);
+            })
+        }
     }
 ];
